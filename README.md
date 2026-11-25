@@ -1,39 +1,46 @@
-# Project 03: EC2 State Monitoring with CloudWatch
+# Project 03: EC2 CloudWatch CPU Alarm
 
-## Objective
-Deploy an EC2 instance and monitor its CPU utilization using an Amazon CloudWatch alarm.
+## Overview
+This project prepares Terraform infrastructure code for an EC2 monitoring server and an Amazon CloudWatch alarm that monitors CPU utilization.
 
-## Tools Used
-- Terraform
+## Objectives
+- Configure an EC2 monitoring instance.
+- Create a CloudWatch CPU utilization alarm.
+- Set the alarm threshold to 70%.
+- Monitor EC2 CPU metrics.
+
+## Technologies
 - AWS EC2
 - Amazon CloudWatch
-- Git
-- GitHub
+- Terraform
 
-## Implementation
-1. Select the latest Amazon Linux 2023 AMI dynamically.
-2. Define a t2.micro EC2 instance.
-3. Create a CloudWatch CPU utilization alarm.
-4. Configure the alarm to trigger when average CPU utilization exceeds 70% for two consecutive five-minute periods.
+## Project Files
+- `main.tf` – EC2 instance and CloudWatch alarm configuration.
+- `versions.tf` – Terraform and AWS provider requirements.
+- `outputs.tf` – Terraform outputs.
+- `.gitignore` – Files excluded from version control.
 
-## Monitoring Configuration
+## Alarm Configuration
 - Metric: CPUUtilization
 - Namespace: AWS/EC2
+- Statistic: Average
+- Period: 300 seconds
 - Threshold: 70%
 - Evaluation periods: 2
-- Period: 300 seconds
-- Statistic: Average
+- Comparison: GreaterThanThreshold
 
-## Security
-- No inbound access rules are added.
-- No AWS credentials are stored in the project.
-- Terraform state files are excluded from Git.
+## Validation
+Terraform formatting and validation were performed locally.
 
-## Deliverables
-- Terraform configuration files.
-- GitHub repository.
-- CloudWatch alarm screenshot.
-- EC2 monitoring evidence.
+**Result:** Terraform configuration validation successful.
 
-## Status
-Configuration prepared. AWS deployment and monitoring tests pending company approval.
+## Deployment Status
+Terraform configuration is prepared and validated.
+
+**AWS deployment is pending.** No EC2 instance or CloudWatch alarm was created as part of this local preparation.
+
+## Learning Outcomes
+- Understanding EC2 monitoring.
+- Configuring CloudWatch metric alarms.
+- Using Terraform to define monitoring infrastructure.
+- Validating infrastructure code without deploying AWS resources.
